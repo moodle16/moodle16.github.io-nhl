@@ -1,1 +1,1863 @@
-{"updated":"2000-01-01T00:00:00Z","standings":[],"teams":{}}
+{
+ "updated": "2026-11-21T13:41:36.681Z",
+ "standings": [
+  {
+   "abbrev": "MIN",
+   "name": "Minnesota Wild",
+   "gp": 24,
+   "w": 17,
+   "l": 3,
+   "otl": 4,
+   "pts": 38,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 1,
+   "rank": 1
+  },
+  {
+   "abbrev": "EDM",
+   "name": "Edmonton Oilers",
+   "gp": 24,
+   "w": 17,
+   "l": 4,
+   "otl": 3,
+   "pts": 37,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 2,
+   "rank": 2
+  },
+  {
+   "abbrev": "CAR",
+   "name": "Carolina Hurricanes",
+   "gp": 22,
+   "w": 16,
+   "l": 3,
+   "otl": 3,
+   "pts": 35,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 3,
+   "rank": 3
+  },
+  {
+   "abbrev": "TBL",
+   "name": "Tampa Bay Lightning",
+   "gp": 22,
+   "w": 15,
+   "l": 5,
+   "otl": 2,
+   "pts": 32,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 4,
+   "rank": 4
+  },
+  {
+   "abbrev": "MTL",
+   "name": "Montréal Canadiens",
+   "gp": 23,
+   "w": 14,
+   "l": 5,
+   "otl": 4,
+   "pts": 32,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 5,
+   "rank": 5
+  },
+  {
+   "abbrev": "OTT",
+   "name": "Ottawa Senators",
+   "gp": 23,
+   "w": 14,
+   "l": 6,
+   "otl": 3,
+   "pts": 31,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 6,
+   "rank": 6
+  },
+  {
+   "abbrev": "VGK",
+   "name": "Vegas Golden Knights",
+   "gp": 24,
+   "w": 13,
+   "l": 6,
+   "otl": 5,
+   "pts": 31,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 7,
+   "rank": 7
+  },
+  {
+   "abbrev": "NJD",
+   "name": "New Jersey Devils",
+   "gp": 22,
+   "w": 15,
+   "l": 7,
+   "otl": 0,
+   "pts": 30,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 8,
+   "rank": 8
+  },
+  {
+   "abbrev": "DAL",
+   "name": "Dallas Stars",
+   "gp": 22,
+   "w": 14,
+   "l": 6,
+   "otl": 2,
+   "pts": 30,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 9,
+   "rank": 9
+  },
+  {
+   "abbrev": "BOS",
+   "name": "Boston Bruins",
+   "gp": 22,
+   "w": 14,
+   "l": 7,
+   "otl": 1,
+   "pts": 29,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 10,
+   "rank": 10
+  },
+  {
+   "abbrev": "COL",
+   "name": "Colorado Avalanche",
+   "gp": 23,
+   "w": 13,
+   "l": 7,
+   "otl": 3,
+   "pts": 29,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 11,
+   "rank": 11
+  },
+  {
+   "abbrev": "NYR",
+   "name": "New York Rangers",
+   "gp": 22,
+   "w": 13,
+   "l": 8,
+   "otl": 1,
+   "pts": 27,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 12,
+   "rank": 12
+  },
+  {
+   "abbrev": "NSH",
+   "name": "Nashville Predators",
+   "gp": 22,
+   "w": 11,
+   "l": 6,
+   "otl": 5,
+   "pts": 27,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 13,
+   "rank": 13
+  },
+  {
+   "abbrev": "FLA",
+   "name": "Florida Panthers",
+   "gp": 23,
+   "w": 12,
+   "l": 8,
+   "otl": 3,
+   "pts": 27,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 14,
+   "rank": 14
+  },
+  {
+   "abbrev": "NYI",
+   "name": "New York Islanders",
+   "gp": 21,
+   "w": 10,
+   "l": 6,
+   "otl": 5,
+   "pts": 25,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 15,
+   "rank": 15
+  },
+  {
+   "abbrev": "UTA",
+   "name": "Utah Mammoth",
+   "gp": 23,
+   "w": 11,
+   "l": 9,
+   "otl": 3,
+   "pts": 25,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 16,
+   "rank": 16
+  },
+  {
+   "abbrev": "WPG",
+   "name": "Winnipeg Jets",
+   "gp": 23,
+   "w": 11,
+   "l": 9,
+   "otl": 3,
+   "pts": 25,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 17,
+   "rank": 17
+  },
+  {
+   "abbrev": "STL",
+   "name": "St. Louis Blues",
+   "gp": 22,
+   "w": 11,
+   "l": 9,
+   "otl": 2,
+   "pts": 24,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 18,
+   "rank": 18
+  },
+  {
+   "abbrev": "ANA",
+   "name": "Anaheim Ducks",
+   "gp": 23,
+   "w": 11,
+   "l": 11,
+   "otl": 1,
+   "pts": 23,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 19,
+   "rank": 19
+  },
+  {
+   "abbrev": "BUF",
+   "name": "Buffalo Sabres",
+   "gp": 22,
+   "w": 9,
+   "l": 9,
+   "otl": 4,
+   "pts": 22,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 20,
+   "rank": 20
+  },
+  {
+   "abbrev": "SJS",
+   "name": "San Jose Sharks",
+   "gp": 24,
+   "w": 10,
+   "l": 12,
+   "otl": 2,
+   "pts": 22,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 21,
+   "rank": 21
+  },
+  {
+   "abbrev": "PHI",
+   "name": "Philadelphia Flyers",
+   "gp": 25,
+   "w": 8,
+   "l": 11,
+   "otl": 6,
+   "pts": 22,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 22,
+   "rank": 22
+  },
+  {
+   "abbrev": "SEA",
+   "name": "Seattle Kraken",
+   "gp": 19,
+   "w": 10,
+   "l": 8,
+   "otl": 1,
+   "pts": 21,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 23,
+   "rank": 23
+  },
+  {
+   "abbrev": "CGY",
+   "name": "Calgary Flames",
+   "gp": 23,
+   "w": 10,
+   "l": 12,
+   "otl": 1,
+   "pts": 21,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 24,
+   "rank": 24
+  },
+  {
+   "abbrev": "WSH",
+   "name": "Washington Capitals",
+   "gp": 20,
+   "w": 10,
+   "l": 10,
+   "otl": 0,
+   "pts": 20,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 25,
+   "rank": 25
+  },
+  {
+   "abbrev": "DET",
+   "name": "Detroit Red Wings",
+   "gp": 22,
+   "w": 8,
+   "l": 11,
+   "otl": 3,
+   "pts": 19,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 26,
+   "rank": 26
+  },
+  {
+   "abbrev": "TOR",
+   "name": "Toronto Maple Leafs",
+   "gp": 24,
+   "w": 8,
+   "l": 13,
+   "otl": 3,
+   "pts": 19,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 27,
+   "rank": 27
+  },
+  {
+   "abbrev": "LAK",
+   "name": "Los Angeles Kings",
+   "gp": 20,
+   "w": 7,
+   "l": 11,
+   "otl": 2,
+   "pts": 16,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 28,
+   "rank": 28
+  },
+  {
+   "abbrev": "CBJ",
+   "name": "Columbus Blue Jackets",
+   "gp": 20,
+   "w": 8,
+   "l": 12,
+   "otl": 0,
+   "pts": 16,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 29,
+   "rank": 29
+  },
+  {
+   "abbrev": "PIT",
+   "name": "Pittsburgh Penguins",
+   "gp": 21,
+   "w": 7,
+   "l": 12,
+   "otl": 2,
+   "pts": 16,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 30,
+   "rank": 30
+  },
+  {
+   "abbrev": "CHI",
+   "name": "Chicago Blackhawks",
+   "gp": 22,
+   "w": 6,
+   "l": 14,
+   "otl": 2,
+   "pts": 14,
+   "division": "Central",
+   "conference": "Western",
+   "seq": 31,
+   "rank": 31
+  },
+  {
+   "abbrev": "VAN",
+   "name": "Vancouver Canucks",
+   "gp": 24,
+   "w": 5,
+   "l": 18,
+   "otl": 1,
+   "pts": 11,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 32,
+   "rank": 32
+  }
+ ],
+ "teams": {
+  "MIN": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "CGY",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "NSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "BOS",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "TOR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "MTL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T03:00:00Z",
+    "opp": "VAN",
+    "home": false
+   }
+  },
+  "EDM": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "TBL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "FLA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "PHI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "TOR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "PHI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T18:00:00Z",
+    "opp": "CAR",
+    "home": false
+   }
+  },
+  "CAR": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "MTL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "SEA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "SEA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-07",
+     "opp": "CHI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-05",
+     "opp": "NYI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T18:00:00Z",
+    "opp": "EDM",
+    "home": true
+   }
+  },
+  "TBL": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "EDM",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "WSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "DET",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "CBJ",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "BUF",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-22",
+    "start": "2026-11-22T22:00:00Z",
+    "opp": "BUF",
+    "home": true
+   }
+  },
+  "MTL": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "CAR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-18",
+     "opp": "NJD",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-16",
+     "opp": "NYR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "COL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "BOS",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "PHI",
+    "home": true
+   }
+  },
+  "OTT": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "PHI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "WPG",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "PIT",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "COL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "WSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "LAK",
+    "home": true
+   }
+  },
+  "VGK": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "DAL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "DAL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "VAN",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-13",
+     "opp": "NSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "UTA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "WPG",
+    "home": false
+   }
+  },
+  "NJD": {
+   "last5": [
+    {
+     "date": "2026-11-18",
+     "opp": "MTL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "WSH",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "WSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "WPG",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-08",
+     "opp": "TOR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "STL",
+    "home": false
+   }
+  },
+  "DAL": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "VGK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "VGK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "FLA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "BUF",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "WPG",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-22",
+    "start": "2026-11-23T00:00:00Z",
+    "opp": "PIT",
+    "home": true
+   }
+  },
+  "BOS": {
+   "last5": [
+    {
+     "date": "2026-11-18",
+     "opp": "DET",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "LAK",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "MIN",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "MTL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-08",
+     "opp": "FLA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "WSH",
+    "home": true
+   }
+  },
+  "COL": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "ANA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-18",
+     "opp": "UTA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "MTL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "OTT",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "TOR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-25",
+    "start": "2026-11-26T02:30:00Z",
+    "opp": "MTL",
+    "home": true
+   }
+  },
+  "NYR": {
+   "last5": [
+    {
+     "date": "2026-11-16",
+     "opp": "MTL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-13",
+     "opp": "VAN",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "CGY",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-09",
+     "opp": "EDM",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-07",
+     "opp": "SEA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-22",
+    "start": "2026-11-22T17:30:00Z",
+    "opp": "CAR",
+    "home": true
+   }
+  },
+  "NSH": {
+   "last5": [
+    {
+     "date": "2026-11-17",
+     "opp": "MIN",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "SJS",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-13",
+     "opp": "VGK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "ANA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "LAK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T23:00:00Z",
+    "opp": "PIT",
+    "home": true
+   }
+  },
+  "FLA": {
+   "last5": [
+    {
+     "date": "2026-11-17",
+     "opp": "EDM",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "DAL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "STL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "DET",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "CBJ",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T23:00:00Z",
+    "opp": "BUF",
+    "home": true
+   }
+  },
+  "NYI": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "WPG",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "CBJ",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "ANA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "LAK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-09",
+     "opp": "SJS",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "DET",
+    "home": false
+   }
+  },
+  "UTA": {
+   "last5": [
+    {
+     "date": "2026-11-18",
+     "opp": "COL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-16",
+     "opp": "VAN",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "SJS",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "STL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "VGK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T02:00:00Z",
+    "opp": "ANA",
+    "home": true
+   }
+  },
+  "WPG": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "NYI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "OTT",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "CHI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "DAL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "NJD",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "VGK",
+    "home": true
+   }
+  },
+  "STL": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "PIT",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "ANA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "FLA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "UTA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "DET",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "NJD",
+    "home": true
+   }
+  },
+  "ANA": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "COL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "STL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "CGY",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "NYI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "NSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T02:00:00Z",
+    "opp": "UTA",
+    "home": false
+   }
+  },
+  "BUF": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "WSH",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "PHI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "DAL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "CHI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "TBL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T23:00:00Z",
+    "opp": "FLA",
+    "home": false
+   }
+  },
+  "SJS": {
+   "last5": [
+    {
+     "date": "2026-11-17",
+     "opp": "CGY",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "NSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "UTA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "PIT",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-09",
+     "opp": "NYI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T03:00:00Z",
+    "opp": "SEA",
+    "home": true
+   }
+  },
+  "PHI": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "OTT",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "BUF",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "EDM",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "CBJ",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "EDM",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "MTL",
+    "home": false
+   }
+  },
+  "SEA": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "VAN",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "CAR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "CAR",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-07",
+     "opp": "NYR",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-04",
+     "opp": "CGY",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T03:00:00Z",
+    "opp": "SJS",
+    "home": false
+   }
+  },
+  "CGY": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "MIN",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "SJS",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "ANA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "LAK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "NYR",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T20:30:00Z",
+    "opp": "CHI",
+    "home": true
+   }
+  },
+  "WSH": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "BUF",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "TBL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "NJD",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "NJD",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "OTT",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "BOS",
+    "home": false
+   }
+  },
+  "DET": {
+   "last5": [
+    {
+     "date": "2026-11-18",
+     "opp": "BOS",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "TBL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "FLA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "STL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-07",
+     "opp": "COL",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "NYI",
+    "home": true
+   }
+  },
+  "TOR": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "LAK",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "CHI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "EDM",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "MIN",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "COL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "CBJ",
+    "home": true
+   }
+  },
+  "LAK": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "TOR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "BOS",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "CGY",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "NYI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "NSH",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "OTT",
+    "home": false
+   }
+  },
+  "CBJ": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "CHI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "NYI",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "PHI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "TBL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-10",
+     "opp": "FLA",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T00:00:00Z",
+    "opp": "TOR",
+    "home": false
+   }
+  },
+  "PIT": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "STL",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "OTT",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "SJS",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-08",
+     "opp": "ANA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-07",
+     "opp": "LAK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T23:00:00Z",
+    "opp": "NSH",
+    "home": false
+   }
+  },
+  "CHI": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "CBJ",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "TOR",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "WPG",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "BUF",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-07",
+     "opp": "CAR",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-21T20:30:00Z",
+    "opp": "CGY",
+    "home": false
+   }
+  },
+  "VAN": {
+   "last5": [
+    {
+     "date": "2026-11-19",
+     "opp": "SEA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-16",
+     "opp": "UTA",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "VGK",
+     "home": false,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-13",
+     "opp": "NYR",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    },
+    {
+     "date": "2026-11-09",
+     "opp": "PHI",
+     "home": true,
+     "p1": null,
+     "status": "neznáme"
+    }
+   ],
+   "next": {
+    "date": "2026-11-21",
+    "start": "2026-11-22T03:00:00Z",
+    "opp": "MIN",
+    "home": true
+   }
+  }
+ }
+}
