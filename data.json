@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T18:37:30.502Z",
+ "updated": "2026-11-21T21:32:35.249Z",
  "standings": [
   {
    "abbrev": "MIN",
@@ -15,28 +15,28 @@
    "rank": 1
   },
   {
-   "abbrev": "EDM",
-   "name": "Edmonton Oilers",
-   "gp": 24,
+   "abbrev": "CAR",
+   "name": "Carolina Hurricanes",
+   "gp": 23,
    "w": 17,
-   "l": 4,
+   "l": 3,
    "otl": 3,
    "pts": 37,
-   "division": "Pacific",
-   "conference": "Western",
+   "division": "Metropolitan",
+   "conference": "Eastern",
    "seq": 2,
    "rank": 2
   },
   {
-   "abbrev": "CAR",
-   "name": "Carolina Hurricanes",
-   "gp": 22,
-   "w": 16,
-   "l": 3,
+   "abbrev": "EDM",
+   "name": "Edmonton Oilers",
+   "gp": 25,
+   "w": 17,
+   "l": 5,
    "otl": 3,
-   "pts": 35,
-   "division": "Metropolitan",
-   "conference": "Eastern",
+   "pts": 37,
+   "division": "Pacific",
+   "conference": "Western",
    "seq": 3,
    "rank": 3
   },
@@ -464,53 +464,15 @@
     "home": false
    }
   },
-  "EDM": {
-   "last5": [
-    {
-     "date": "2026-11-19",
-     "opp": "TBL",
-     "home": false,
-     "p1": "0:0",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-17",
-     "opp": "FLA",
-     "home": false,
-     "p1": "2:0",
-     "status": "vyhral"
-    },
-    {
-     "date": "2026-11-15",
-     "opp": "PHI",
-     "home": false,
-     "p1": "3:0",
-     "status": "vyhral"
-    },
-    {
-     "date": "2026-11-14",
-     "opp": "TOR",
-     "home": false,
-     "p1": "0:0",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-11",
-     "opp": "PHI",
-     "home": true,
-     "p1": "0:0",
-     "status": "remíza"
-    }
-   ],
-   "next": {
-    "date": "2026-11-22",
-    "start": "2026-11-23T00:00:00Z",
-    "opp": "STL",
-    "home": false
-   }
-  },
   "CAR": {
    "last5": [
+    {
+     "date": "2026-11-21",
+     "opp": "EDM",
+     "home": true,
+     "p1": "0:2",
+     "status": "prehral"
+    },
     {
      "date": "2026-11-19",
      "opp": "MTL",
@@ -538,19 +500,57 @@
      "home": true,
      "p1": "4:0",
      "status": "vyhral"
-    },
-    {
-     "date": "2026-11-05",
-     "opp": "NYI",
-     "home": false,
-     "p1": "2:0",
-     "status": "vyhral"
     }
    ],
    "next": {
     "date": "2026-11-22",
     "start": "2026-11-22T17:30:00Z",
     "opp": "NYR",
+    "home": false
+   }
+  },
+  "EDM": {
+   "last5": [
+    {
+     "date": "2026-11-21",
+     "opp": "CAR",
+     "home": false,
+     "p1": "2:0",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-19",
+     "opp": "TBL",
+     "home": false,
+     "p1": "0:0",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "FLA",
+     "home": false,
+     "p1": "2:0",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "PHI",
+     "home": false,
+     "p1": "3:0",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "TOR",
+     "home": false,
+     "p1": "0:0",
+     "status": "remíza"
+    }
+   ],
+   "next": {
+    "date": "2026-11-22",
+    "start": "2026-11-23T00:00:00Z",
+    "opp": "STL",
     "home": false
    }
   },
@@ -1493,10 +1493,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-21T20:30:00Z",
-    "opp": "CHI",
-    "home": true
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "OTT",
+    "home": false
    }
   },
   "WSH": {
@@ -1808,9 +1808,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-21T20:30:00Z",
-    "opp": "CGY",
+    "date": "2026-11-22",
+    "start": "2026-11-23T01:00:00Z",
+    "opp": "VAN",
     "home": false
    }
   },
