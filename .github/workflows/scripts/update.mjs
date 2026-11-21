@@ -18,16 +18,64 @@ async function getJson(url, tries = 3) {
   return null;
 }
 
+function fromLinescore(d) {
+  const periods = d?.summary?.linescore?.byPeriod ?? d?.linescore?.byPeriod ?? [];
+  for (const p of periods) {
+    if (p?.periodDescriptor?.number === 1 && p.away != null && p.home != null) {
+      return { away: Number(p.away), home: Number(p.home) };
+    }
+  }
+  return null;
+}
+
+function fromScoring(d) {
+  const scoring = d?.summary?.scoring;
+  if (!Array.isArray(scoring) || !scoring.length) return null;
+  const home = d.homeTeam?.abbrev;
+  const away = d.awayTeam?.abbrev;
+  if (!home || !away) return null;
+  const p1 = scoring.find((s) => s?.periodDescriptor?.number === 1);
+  if (!p1) {
+    return scoring.some((s) => (s?.periodDescriptor?.number ?? 0) >= 2) ? { away: 0, home: 0 } : null;
+  }
+  let h = 0;
+  let a = 0;
+  for (const g of p1.goals ?? []) {
+    const ab = g?.teamAbbrev?.default ?? g?.teamAbbrev;
+    if (ab === home) h++;
+    else if (ab === away) a++;
+  }
+  return { away: a, home: h };
+}
+
+function fromPbp(d) {
+  const plays = d?.plays;
+  if (!Array.isArray(plays) || !plays.length) return null;
+  let home = 0;
+  let away = 0;
+  for (const p of plays) {
+    if (p?.typeDescKey === 'goal' && p?.periodDescriptor?.number === 1 && p.details) {
+      home = Number(p.details.homeScore ?? home);
+      away = Number(p.details.awayScore ?? away);
+    }
+  }
+  return { away, home };
+}
+
 const p1Cache = new Map();
+let diagShown = false;
 async function firstPeriod(gameId) {
   if (p1Cache.has(gameId)) return p1Cache.get(gameId);
-  const data = await getJson(`${API}/gamecenter/${gameId}/landing`);
-  let result = null;
-  const periods = data?.summary?.linescore?.byPeriod ?? [];
-  for (const p of periods) {
-    if (p?.periodDescriptor?.number === 1) {
-      result = { away: Number(p.away), home: Number(p.home) };
-      break;
+  const landing = await getJson(`${API}/gamecenter/${gameId}/landing`);
+  let result = fromLinescore(landing) || fromScoring(landing);
+  if (!result) {
+    const pbp = await getJson(`${API}/gamecenter/${gameId}/play-by-play`);
+    result = fromPbp(pbp);
+    if (!result && !diagShown) {
+      diagShown = true;
+      console.warn(`DIAG hra ${gameId}: landing kľúče = ${Object.keys(landing ?? {}).join(',')}`);
+      console.warn(`DIAG summary kľúče = ${Object.keys(landing?.summary ?? {}).join(',')}`);
+      console.warn(`DIAG pbp kľúče = ${Object.keys(pbp ?? {}).join(',')}`);
     }
   }
   p1Cache.set(gameId, result);
