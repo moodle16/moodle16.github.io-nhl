@@ -3,46 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NHL – tabuľka a 1. tretiny</title>
+<title>NHL – forma v 1. tretine</title>
 <style>
-  :root { --bg:#fff; --fg:#1a1a1a; --line:#ddd; --muted:#666; --win:#1a7f37; --loss:#c62828; --draw:#777; --head:#f3f4f6; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#121212; --fg:#eee; --line:#333; --muted:#aaa; --win:#4cc36b; --loss:#ff6b6b; --draw:#aaa; --head:#1e1e1e; }
-  }
-  body { font-family: system-ui, sans-serif; background:var(--bg); color:var(--fg); margin:0; padding:16px; }
-  main { max-width:900px; margin:0 auto; }
-  h1 { font-size:1.4rem; }
-  .upd { color:var(--muted); font-size:.85rem; margin-bottom:12px; }
-  .wrap { overflow-x:auto; }
-  table { width:100%; border-collapse:collapse; }
-  th, td { padding:8px 10px; border-bottom:1px solid var(--line); text-align:left; white-space:nowrap; }
-  th { background:var(--head); }
-  tr.team { cursor:pointer; }
-  tr.team:hover { background:var(--head); }
-  td.n { text-align:right; }
-  .detail td { background:var(--head); white-space:normal; }
-  .detail table { margin:4px 0; }
-  .vyhral { color:var(--win); font-weight:600; }
-  .prehral { color:var(--loss); font-weight:600; }
-  .remíza, .neznáme { color:var(--draw); font-weight:600; }
-  .next { margin-top:8px; }
+:root{--bg:#fff;--fg:#1a1a1a;--line:#e3e5e8;--muted:#6b7280;--head:#f3f4f6;--win:#1fa34a;--loss:#d62828;--draw:#8a8f98}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--fg:#eee;--line:#2c2c2c;--muted:#9aa0a6;--head:#1e1e1e}}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:16px}
+main{max-width:820px;margin:0 auto}
+h1{font-size:1.3rem;margin:0 0 4px}
+h2{font-size:.95rem;background:var(--head);margin:20px 0 0;padding:8px 10px}
+.upd{color:var(--muted);font-size:.85rem}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{font-size:.75rem;color:var(--muted);text-transform:uppercase;font-weight:600}
+td.rank{width:32px;font-weight:700}
+td.team{font-weight:600;white-space:nowrap}
+.form{display:flex;gap:6px}
+.g{display:flex;flex-direction:column;align-items:center;width:44px}
+.b{width:28px;height:28px;border-radius:5px;color:#fff;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+.b.V{background:var(--win)}
+.b.P{background:var(--loss)}
+.b.R,.b.N{background:var(--draw)}
+.o{font-size:.62rem;color:var(--muted);margin-top:2px;white-space:nowrap}
+.next{font-size:.8rem;white-space:nowrap}
+.next small{color:var(--muted);display:block}
+.legend{color:var(--muted);font-size:.8rem;margin-top:16px;line-height:1.5}
 </style>
 </head>
 <body>
 <main>
-  <h1>NHL – poradie tímov</h1>
+  <h1>NHL – forma v 1. tretine</h1>
   <div class="upd" id="upd">Načítavam…</div>
-  <div class="wrap">
-    <table>
-      <thead><tr><th>#</th><th>Tím</th><th class="n">Z</th><th class="n">V</th><th class="n">P</th><th class="n">PP</th><th class="n">Body</th></tr></thead>
-      <tbody id="body"></tbody>
-    </table>
-  </div>
-  <p class="upd">Klikni na tím pre posledných 5 zápasov (1. tretina) a najbližší zápas. V = výhry, P = prehry, PP = prehry po predĺžení/nájazdoch.</p>
+  <div id="root"></div>
+  <p class="legend">Posledných 5 zápasov, od najstaršieho (vľavo) po najnovší (vpravo). Len 1. tretina: <b>V</b> = vyhrala, <b>P</b> = prehrala, <b>R</b> = remíza. <b>vs</b> = doma, <b>@</b> = vonku. Po nabehnutí myšou na políčko uvidíš dátum a skóre tretiny.</p>
 </main>
 <script>
-const el = (tag, text, cls) => { const e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
-const fmtDate = (s) => new Date(s + 'T12:00:00').toLocaleDateString('sk-SK');
+const el = (t, x, c) => { const e = document.createElement(t); if (x != null) e.textContent = x; if (c) e.className = c; return e; };
+const fmt = (s) => new Date(s + 'T12:00:00').toLocaleDateString('sk-SK', { day: 'numeric', month: 'numeric' });
+const NAMES = { Western: 'Západná konferencia', Eastern: 'Východná konferencia' };
+const LET = { vyhral: 'V', prehral: 'P', 'remíza': 'R' };
 
 fetch('data.json?_=' + Date.now())
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -51,41 +50,51 @@ fetch('data.json?_=' + Date.now())
 
 function render(data) {
   document.getElementById('upd').textContent = 'Aktualizované: ' + new Date(data.updated).toLocaleString('sk-SK');
-  const body = document.getElementById('body');
+  const groups = {};
   for (const t of data.standings) {
-    const tr = el('tr', null, 'team');
-    [t.rank, t.name, t.gp, t.w, t.l, t.otl, t.pts].forEach((v, i) => tr.appendChild(el('td', v, i >= 2 ? 'n' : '')));
-    const detail = el('tr', null, 'detail');
-    detail.hidden = true;
-    const td = el('td'); td.colSpan = 7;
-    td.appendChild(buildDetail(data.teams[t.abbrev]));
-    detail.appendChild(td);
-    tr.addEventListener('click', () => { detail.hidden = !detail.hidden; });
-    body.append(tr, detail);
+    const key = t.conference || 'NHL';
+    (groups[key] = groups[key] || []).push(t);
   }
-}
-
-function buildDetail(team) {
-  const box = el('div');
-  if (!team) { box.textContent = 'Dáta o zápasoch nie sú k dispozícii.'; return box; }
-  const tbl = el('table');
-  const head = el('tr');
-  ['Dátum', 'Súper', 'Doma / vonku', '1. tretina', 'Výsledok'].forEach((h) => head.appendChild(el('th', h)));
-  tbl.appendChild(head);
-  for (const g of team.last5) {
-    const r = el('tr');
-    r.append(el('td', fmtDate(g.date)), el('td', g.opp), el('td', g.home ? 'Doma' : 'Vonku'), el('td', g.p1 ?? '–'), el('td', g.status, g.status));
-    tbl.appendChild(r);
+  const order = ['Western', 'Eastern', ...Object.keys(groups).filter((k) => k !== 'Western' && k !== 'Eastern')];
+  const root = document.getElementById('root');
+  for (const key of order) {
+    if (!groups[key]) continue;
+    root.appendChild(el('h2', NAMES[key] || key));
+    const wrap = el('div', null, 'wrap');
+    const tbl = el('table');
+    const head = el('tr');
+    ['#', 'Tím', 'Forma – 1. tretina', 'Najbližší zápas'].forEach((h) => head.appendChild(el('th', h)));
+    tbl.appendChild(head);
+    groups[key].forEach((t, i) => {
+      const team = data.teams[t.abbrev];
+      const tr = el('tr');
+      tr.appendChild(el('td', i + 1, 'rank'));
+      tr.appendChild(el('td', t.name, 'team'));
+      const f = el('td');
+      const form = el('div', null, 'form');
+      for (const g of (team ? team.last5.slice().reverse() : [])) {
+        const cell = el('div', null, 'g');
+        cell.title = fmt(g.date) + ': 1. tretina ' + (g.p1 ?? '–') + ' (' + g.status + ')';
+        const letter = LET[g.status] || '?';
+        cell.appendChild(el('div', letter, 'b ' + (LET[g.status] ? letter : 'N')));
+        cell.appendChild(el('div', (g.home ? 'vs ' : '@ ') + g.opp, 'o'));
+        form.appendChild(cell);
+      }
+      f.appendChild(form);
+      tr.appendChild(f);
+      const n = el('td', null, 'next');
+      if (team && team.next) {
+        n.textContent = (team.next.home ? 'vs ' : '@ ') + team.next.opp;
+        n.appendChild(el('small', fmt(team.next.date)));
+      } else {
+        n.textContent = '–';
+      }
+      tr.appendChild(n);
+      tbl.appendChild(tr);
+    });
+    wrap.appendChild(tbl);
+    root.appendChild(wrap);
   }
-  box.appendChild(tbl);
-  const next = el('div', null, 'next');
-  if (team.next) {
-    next.textContent = `Najbližší zápas: ${fmtDate(team.next.date)} – ${team.next.home ? 'doma proti' : 'vonku proti'} ${team.next.opp}`;
-  } else {
-    next.textContent = 'Najbližší zápas: zatiaľ nie je v rozpise.';
-  }
-  box.appendChild(next);
-  return box;
 }
 </script>
 </body>
