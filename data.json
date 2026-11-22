@@ -1,6 +1,19 @@
 {
- "updated": "2026-11-22T18:38:42.221Z",
+ "updated": "2026-11-22T21:36:34.423Z",
  "standings": [
+  {
+   "abbrev": "CAR",
+   "name": "Carolina Hurricanes",
+   "gp": 24,
+   "w": 18,
+   "l": 3,
+   "otl": 3,
+   "pts": 39,
+   "division": "Metropolitan",
+   "conference": "Eastern",
+   "seq": 1,
+   "rank": 1
+  },
   {
    "abbrev": "MIN",
    "name": "Minnesota Wild",
@@ -11,19 +24,6 @@
    "pts": 39,
    "division": "Central",
    "conference": "Western",
-   "seq": 1,
-   "rank": 1
-  },
-  {
-   "abbrev": "CAR",
-   "name": "Carolina Hurricanes",
-   "gp": 23,
-   "w": 17,
-   "l": 3,
-   "otl": 3,
-   "pts": 37,
-   "division": "Metropolitan",
-   "conference": "Eastern",
    "seq": 2,
    "rank": 2
   },
@@ -171,12 +171,12 @@
    "rank": 13
   },
   {
-   "abbrev": "NYR",
-   "name": "New York Rangers",
+   "abbrev": "NYI",
+   "name": "New York Islanders",
    "gp": 22,
-   "w": 13,
-   "l": 8,
-   "otl": 1,
+   "w": 11,
+   "l": 6,
+   "otl": 5,
    "pts": 27,
    "division": "Metropolitan",
    "conference": "Eastern",
@@ -184,12 +184,12 @@
    "rank": 14
   },
   {
-   "abbrev": "NYI",
-   "name": "New York Islanders",
-   "gp": 22,
-   "w": 11,
-   "l": 6,
-   "otl": 5,
+   "abbrev": "NYR",
+   "name": "New York Rangers",
+   "gp": 23,
+   "w": 13,
+   "l": 9,
+   "otl": 1,
    "pts": 27,
    "division": "Metropolitan",
    "conference": "Eastern",
@@ -419,6 +419,51 @@
   }
  ],
  "teams": {
+  "CAR": {
+   "last5": [
+    {
+     "date": "2026-11-22",
+     "opp": "NYR",
+     "home": false,
+     "p1": "1:1",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-21",
+     "opp": "EDM",
+     "home": true,
+     "p1": "0:2",
+     "status": "prehral"
+    },
+    {
+     "date": "2026-11-19",
+     "opp": "MTL",
+     "home": true,
+     "p1": "0:0",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "SEA",
+     "home": true,
+     "p1": "2:0",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-12",
+     "opp": "SEA",
+     "home": false,
+     "p1": "2:0",
+     "status": "vyhral"
+    }
+   ],
+   "next": {
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "TBL",
+    "home": false
+   }
+  },
   "MIN": {
    "last5": [
     {
@@ -461,51 +506,6 @@
     "date": "2026-11-23",
     "start": "2026-11-24T03:00:00Z",
     "opp": "SJS",
-    "home": false
-   }
-  },
-  "CAR": {
-   "last5": [
-    {
-     "date": "2026-11-21",
-     "opp": "EDM",
-     "home": true,
-     "p1": "0:2",
-     "status": "prehral"
-    },
-    {
-     "date": "2026-11-19",
-     "opp": "MTL",
-     "home": true,
-     "p1": "0:0",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-14",
-     "opp": "SEA",
-     "home": true,
-     "p1": "2:0",
-     "status": "vyhral"
-    },
-    {
-     "date": "2026-11-12",
-     "opp": "SEA",
-     "home": false,
-     "p1": "2:0",
-     "status": "vyhral"
-    },
-    {
-     "date": "2026-11-07",
-     "opp": "CHI",
-     "home": true,
-     "p1": "4:0",
-     "status": "vyhral"
-    }
-   ],
-   "next": {
-    "date": "2026-11-25",
-    "start": "2026-11-26T00:00:00Z",
-    "opp": "TBL",
     "home": false
    }
   },
@@ -1004,51 +1004,6 @@
     "home": true
    }
   },
-  "NYR": {
-   "last5": [
-    {
-     "date": "2026-11-16",
-     "opp": "MTL",
-     "home": true,
-     "p1": "0:0",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-13",
-     "opp": "VAN",
-     "home": false,
-     "p1": "1:1",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-11",
-     "opp": "CGY",
-     "home": false,
-     "p1": "0:0",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-09",
-     "opp": "EDM",
-     "home": false,
-     "p1": "0:1",
-     "status": "prehral"
-    },
-    {
-     "date": "2026-11-07",
-     "opp": "SEA",
-     "home": false,
-     "p1": "3:0",
-     "status": "vyhral"
-    }
-   ],
-   "next": {
-    "date": "2026-11-25",
-    "start": "2026-11-26T00:00:00Z",
-    "opp": "BUF",
-    "home": false
-   }
-  },
   "NYI": {
    "last5": [
     {
@@ -1092,6 +1047,51 @@
     "start": "2026-11-24T00:30:00Z",
     "opp": "TOR",
     "home": true
+   }
+  },
+  "NYR": {
+   "last5": [
+    {
+     "date": "2026-11-22",
+     "opp": "CAR",
+     "home": true,
+     "p1": "1:1",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-16",
+     "opp": "MTL",
+     "home": true,
+     "p1": "0:0",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-13",
+     "opp": "VAN",
+     "home": false,
+     "p1": "1:1",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-11",
+     "opp": "CGY",
+     "home": false,
+     "p1": "0:0",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-09",
+     "opp": "EDM",
+     "home": false,
+     "p1": "0:1",
+     "status": "prehral"
+    }
+   ],
+   "next": {
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "BUF",
+    "home": false
    }
   },
   "UTA": {
