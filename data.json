@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T21:32:35.249Z",
+ "updated": "2026-11-22T00:46:34.587Z",
  "standings": [
   {
    "abbrev": "MIN",
@@ -262,8 +262,8 @@
    "rank": 20
   },
   {
-   "abbrev": "SJS",
-   "name": "San Jose Sharks",
+   "abbrev": "CGY",
+   "name": "Calgary Flames",
    "gp": 24,
    "w": 10,
    "l": 12,
@@ -275,6 +275,19 @@
    "rank": 21
   },
   {
+   "abbrev": "SJS",
+   "name": "San Jose Sharks",
+   "gp": 24,
+   "w": 10,
+   "l": 12,
+   "otl": 2,
+   "pts": 22,
+   "division": "Pacific",
+   "conference": "Western",
+   "seq": 22,
+   "rank": 22
+  },
+  {
    "abbrev": "PHI",
    "name": "Philadelphia Flyers",
    "gp": 25,
@@ -284,8 +297,8 @@
    "pts": 22,
    "division": "Metropolitan",
    "conference": "Eastern",
-   "seq": 22,
-   "rank": 22
+   "seq": 23,
+   "rank": 23
   },
   {
    "abbrev": "SEA",
@@ -293,19 +306,6 @@
    "gp": 19,
    "w": 10,
    "l": 8,
-   "otl": 1,
-   "pts": 21,
-   "division": "Pacific",
-   "conference": "Western",
-   "seq": 23,
-   "rank": 23
-  },
-  {
-   "abbrev": "CGY",
-   "name": "Calgary Flames",
-   "gp": 23,
-   "w": 10,
-   "l": 12,
    "otl": 1,
    "pts": 21,
    "division": "Pacific",
@@ -394,11 +394,11 @@
   {
    "abbrev": "CHI",
    "name": "Chicago Blackhawks",
-   "gp": 22,
-   "w": 6,
+   "gp": 23,
+   "w": 7,
    "l": 14,
    "otl": 2,
-   "pts": 14,
+   "pts": 16,
    "division": "Central",
    "conference": "Western",
    "seq": 31,
@@ -638,9 +638,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "PHI",
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "LAK",
     "home": true
    }
   },
@@ -683,9 +683,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "LAK",
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "CGY",
     "home": true
    }
   },
@@ -728,9 +728,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "WPG",
+    "date": "2026-11-24",
+    "start": "2026-11-25T01:00:00Z",
+    "opp": "EDM",
     "home": false
    }
   },
@@ -773,10 +773,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "STL",
-    "home": false
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:00:00Z",
+    "opp": "CBJ",
+    "home": true
    }
   },
   "DAL": {
@@ -863,9 +863,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "WSH",
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "WPG",
     "home": true
    }
   },
@@ -998,10 +998,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-21T23:00:00Z",
-    "opp": "PIT",
-    "home": true
+    "date": "2026-11-25",
+    "start": "2026-11-26T01:00:00Z",
+    "opp": "DAL",
+    "home": false
    }
   },
   "FLA": {
@@ -1043,9 +1043,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-21T23:00:00Z",
-    "opp": "BUF",
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "OTT",
     "home": true
    }
   },
@@ -1088,10 +1088,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "DET",
-    "home": false
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "TOR",
+    "home": true
    }
   },
   "UTA": {
@@ -1178,9 +1178,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "VGK",
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "UTA",
     "home": true
    }
   },
@@ -1223,9 +1223,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "NJD",
+    "date": "2026-11-22",
+    "start": "2026-11-23T00:00:00Z",
+    "opp": "EDM",
     "home": true
    }
   },
@@ -1313,9 +1313,54 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-21T23:00:00Z",
-    "opp": "FLA",
+    "date": "2026-11-22",
+    "start": "2026-11-22T22:00:00Z",
+    "opp": "TBL",
+    "home": false
+   }
+  },
+  "CGY": {
+   "last5": [
+    {
+     "date": "2026-11-21",
+     "opp": "CHI",
+     "home": true,
+     "p1": "1:0",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-19",
+     "opp": "MIN",
+     "home": true,
+     "p1": "1:2",
+     "status": "prehral"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "SJS",
+     "home": false,
+     "p1": "2:1",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-15",
+     "opp": "ANA",
+     "home": false,
+     "p1": "0:2",
+     "status": "prehral"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "LAK",
+     "home": false,
+     "p1": "0:0",
+     "status": "remíza"
+    }
+   ],
+   "next": {
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "OTT",
     "home": false
    }
   },
@@ -1403,9 +1448,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "MTL",
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "WSH",
     "home": false
    }
   },
@@ -1454,51 +1499,6 @@
     "home": false
    }
   },
-  "CGY": {
-   "last5": [
-    {
-     "date": "2026-11-19",
-     "opp": "MIN",
-     "home": true,
-     "p1": "1:2",
-     "status": "prehral"
-    },
-    {
-     "date": "2026-11-17",
-     "opp": "SJS",
-     "home": false,
-     "p1": "2:1",
-     "status": "vyhral"
-    },
-    {
-     "date": "2026-11-15",
-     "opp": "ANA",
-     "home": false,
-     "p1": "0:2",
-     "status": "prehral"
-    },
-    {
-     "date": "2026-11-14",
-     "opp": "LAK",
-     "home": false,
-     "p1": "0:0",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-11",
-     "opp": "NYR",
-     "home": true,
-     "p1": "0:0",
-     "status": "remíza"
-    }
-   ],
-   "next": {
-    "date": "2026-11-23",
-    "start": "2026-11-24T00:30:00Z",
-    "opp": "OTT",
-    "home": false
-   }
-  },
   "WSH": {
    "last5": [
     {
@@ -1538,10 +1538,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "BOS",
-    "home": false
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "PHI",
+    "home": true
    }
   },
   "DET": {
@@ -1583,9 +1583,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "NYI",
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:30:00Z",
+    "opp": "VAN",
     "home": true
    }
   },
@@ -1628,10 +1628,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "CBJ",
-    "home": true
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "NYI",
+    "home": false
    }
   },
   "LAK": {
@@ -1673,9 +1673,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "OTT",
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:30:00Z",
+    "opp": "MTL",
     "home": false
    }
   },
@@ -1718,9 +1718,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-22T00:00:00Z",
-    "opp": "TOR",
+    "date": "2026-11-23",
+    "start": "2026-11-24T00:00:00Z",
+    "opp": "NJD",
     "home": false
    }
   },
@@ -1763,14 +1763,21 @@
     }
    ],
    "next": {
-    "date": "2026-11-21",
-    "start": "2026-11-21T23:00:00Z",
-    "opp": "NSH",
+    "date": "2026-11-22",
+    "start": "2026-11-23T00:00:00Z",
+    "opp": "DAL",
     "home": false
    }
   },
   "CHI": {
    "last5": [
+    {
+     "date": "2026-11-21",
+     "opp": "CGY",
+     "home": false,
+     "p1": "0:1",
+     "status": "prehral"
+    },
     {
      "date": "2026-11-19",
      "opp": "CBJ",
@@ -1797,13 +1804,6 @@
      "opp": "BUF",
      "home": true,
      "p1": "1:2",
-     "status": "prehral"
-    },
-    {
-     "date": "2026-11-07",
-     "opp": "CAR",
-     "home": false,
-     "p1": "0:4",
      "status": "prehral"
     }
    ],
