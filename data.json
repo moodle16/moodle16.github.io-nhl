@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22T21:36:34.423Z",
+ "updated": "2026-11-23T00:51:46.603Z",
  "standings": [
   {
    "abbrev": "CAR",
@@ -69,9 +69,9 @@
   {
    "abbrev": "TBL",
    "name": "Tampa Bay Lightning",
-   "gp": 22,
+   "gp": 23,
    "w": 15,
-   "l": 5,
+   "l": 6,
    "otl": 2,
    "pts": 32,
    "division": "Atlantic",
@@ -236,6 +236,19 @@
    "rank": 18
   },
   {
+   "abbrev": "BUF",
+   "name": "Buffalo Sabres",
+   "gp": 24,
+   "w": 10,
+   "l": 10,
+   "otl": 4,
+   "pts": 24,
+   "division": "Atlantic",
+   "conference": "Eastern",
+   "seq": 19,
+   "rank": 19
+  },
+  {
    "abbrev": "SJS",
    "name": "San Jose Sharks",
    "gp": 25,
@@ -245,8 +258,8 @@
    "pts": 24,
    "division": "Pacific",
    "conference": "Western",
-   "seq": 19,
-   "rank": 19
+   "seq": 20,
+   "rank": 20
   },
   {
    "abbrev": "PHI",
@@ -258,8 +271,8 @@
    "pts": 24,
    "division": "Metropolitan",
    "conference": "Eastern",
-   "seq": 20,
-   "rank": 20
+   "seq": 21,
+   "rank": 21
   },
   {
    "abbrev": "ANA",
@@ -271,19 +284,6 @@
    "pts": 23,
    "division": "Pacific",
    "conference": "Western",
-   "seq": 21,
-   "rank": 21
-  },
-  {
-   "abbrev": "BUF",
-   "name": "Buffalo Sabres",
-   "gp": 23,
-   "w": 9,
-   "l": 10,
-   "otl": 4,
-   "pts": 22,
-   "division": "Atlantic",
-   "conference": "Eastern",
    "seq": 22,
    "rank": 22
   },
@@ -548,10 +548,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-22",
-    "start": "2026-11-23T00:00:00Z",
-    "opp": "STL",
-    "home": false
+    "date": "2026-11-24",
+    "start": "2026-11-25T01:00:00Z",
+    "opp": "VGK",
+    "home": true
    }
   },
   "OTT": {
@@ -647,6 +647,13 @@
   "TBL": {
    "last5": [
     {
+     "date": "2026-11-22",
+     "opp": "BUF",
+     "home": true,
+     "p1": "1:1",
+     "status": "remíza"
+    },
+    {
      "date": "2026-11-19",
      "opp": "EDM",
      "home": true,
@@ -673,19 +680,12 @@
      "home": false,
      "p1": "1:1",
      "status": "remíza"
-    },
-    {
-     "date": "2026-11-11",
-     "opp": "BUF",
-     "home": false,
-     "p1": "2:0",
-     "status": "vyhral"
     }
    ],
    "next": {
-    "date": "2026-11-22",
-    "start": "2026-11-22T22:00:00Z",
-    "opp": "BUF",
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "CAR",
     "home": true
    }
   },
@@ -818,9 +818,9 @@
     }
    ],
    "next": {
-    "date": "2026-11-22",
-    "start": "2026-11-23T00:00:00Z",
-    "opp": "PIT",
+    "date": "2026-11-25",
+    "start": "2026-11-26T01:00:00Z",
+    "opp": "NSH",
     "home": true
    }
   },
@@ -1178,10 +1178,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-22",
-    "start": "2026-11-23T00:00:00Z",
-    "opp": "EDM",
-    "home": true
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "NYI",
+    "home": false
    }
   },
   "WPG": {
@@ -1226,6 +1226,51 @@
     "date": "2026-11-23",
     "start": "2026-11-24T00:30:00Z",
     "opp": "UTA",
+    "home": true
+   }
+  },
+  "BUF": {
+   "last5": [
+    {
+     "date": "2026-11-22",
+     "opp": "TBL",
+     "home": false,
+     "p1": "1:1",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-21",
+     "opp": "FLA",
+     "home": false,
+     "p1": "1:1",
+     "status": "remíza"
+    },
+    {
+     "date": "2026-11-19",
+     "opp": "WSH",
+     "home": false,
+     "p1": "4:1",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-17",
+     "opp": "PHI",
+     "home": false,
+     "p1": "1:0",
+     "status": "vyhral"
+    },
+    {
+     "date": "2026-11-14",
+     "opp": "DAL",
+     "home": false,
+     "p1": "0:0",
+     "status": "remíza"
+    }
+   ],
+   "next": {
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "NYR",
     "home": true
    }
   },
@@ -1361,51 +1406,6 @@
     "date": "2026-11-23",
     "start": "2026-11-24T02:40:00Z",
     "opp": "SEA",
-    "home": false
-   }
-  },
-  "BUF": {
-   "last5": [
-    {
-     "date": "2026-11-21",
-     "opp": "FLA",
-     "home": false,
-     "p1": "1:1",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-19",
-     "opp": "WSH",
-     "home": false,
-     "p1": "4:1",
-     "status": "vyhral"
-    },
-    {
-     "date": "2026-11-17",
-     "opp": "PHI",
-     "home": false,
-     "p1": "1:0",
-     "status": "vyhral"
-    },
-    {
-     "date": "2026-11-14",
-     "opp": "DAL",
-     "home": false,
-     "p1": "0:0",
-     "status": "remíza"
-    },
-    {
-     "date": "2026-11-12",
-     "opp": "CHI",
-     "home": false,
-     "p1": "2:1",
-     "status": "vyhral"
-    }
-   ],
-   "next": {
-    "date": "2026-11-22",
-    "start": "2026-11-22T22:00:00Z",
-    "opp": "TBL",
     "home": false
    }
   },
@@ -1763,10 +1763,10 @@
     }
    ],
    "next": {
-    "date": "2026-11-22",
-    "start": "2026-11-23T00:00:00Z",
-    "opp": "DAL",
-    "home": false
+    "date": "2026-11-25",
+    "start": "2026-11-26T00:00:00Z",
+    "opp": "CGY",
+    "home": true
    }
   },
   "CHI": {
