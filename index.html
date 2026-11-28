@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NHL – 1. tretina</title>
+<title>Hokej – 1. tretina</title>
 <style>
 :root{
   --bg:#eef0f2;--card:#fff;--fg:#1d2329;--muted:#6b7480;--line:#e4e7ea;--zebra:#f7f8f9;--hover:#eef5ff;
@@ -26,6 +26,20 @@ header h1 span{color:var(--accent)}
 .tabs button{appearance:none;border:0;background:var(--sub);color:var(--fg);font:inherit;font-weight:600;padding:8px 18px;cursor:pointer;margin-right:2px;border-radius:4px 4px 0 0}
 .tabs button[aria-pressed="true"]{background:var(--bar);color:var(--bar-fg)}
 .tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding-top:6px;margin-bottom:4px}
+.bar .tabs{margin-bottom:0}
+.jump{display:flex;gap:6px;overflow-x:auto;padding:8px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.jump::-webkit-scrollbar{display:none}
+.jump a{flex:none;padding:4px 10px;border-radius:14px;background:var(--card);border:1px solid var(--line);color:var(--fg);
+  text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap}
+.jump a:hover,.jump a:focus-visible{border-color:var(--bar)}
+.league{scroll-margin-top:var(--barh,96px)}
+.lhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin:14px 0 6px}
+.lhead h2{font-size:16px;margin:0}
+.lhead h2 .cty{color:var(--muted);font-weight:600}
+.lhead .upd{margin:0}
+.nodata{background:var(--card);border-radius:4px;padding:12px;color:var(--muted);margin-bottom:16px}
 
 section{background:var(--card);margin-bottom:16px;border-radius:4px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.08)}
 table{width:100%;border-collapse:collapse}
@@ -91,15 +105,18 @@ tr.det>td{padding:0;border-top:1px solid var(--line);background:var(--card)}
 <body>
 <main>
   <header>
-    <h1>NHL <span>·</span> forma v 1. tretine</h1>
+    <h1>Hokej <span>·</span> forma v 1. tretine</h1>
     <div class="upd" id="upd">Načítavam…</div>
   </header>
 
-  <nav class="tabs" id="tabs" aria-label="Filter zápasov">
-    <button type="button" data-f="all" aria-pressed="true">Celkom</button>
-    <button type="button" data-f="home" aria-pressed="false">Doma</button>
-    <button type="button" data-f="away" aria-pressed="false">Vonku</button>
-  </nav>
+  <div class="bar" id="bar">
+    <nav class="tabs" id="tabs" aria-label="Filter zápasov">
+      <button type="button" data-f="all" aria-pressed="true">Celkom</button>
+      <button type="button" data-f="home" aria-pressed="false">Doma</button>
+      <button type="button" data-f="away" aria-pressed="false">Vonku</button>
+    </nav>
+    <nav class="jump" id="jump" aria-label="Skok na ligu"></nav>
+  </div>
 
   <div id="root"></div>
 
@@ -113,7 +130,8 @@ tr.det>td{padding:0;border-top:1px solid var(--line);background:var(--card)}
     sa zobrazí, len ak sa ten zápas hrá doma/vonku.<br>
     Myšou nad štvorčekom (na mobile ťuknutím) uvidíš dátum, súpera a skóre, pri budúcom zápase dátum a čas (tvoj miestny čas).
     Kliknutím na tím rozbalíš všetky jeho zápasy.
-    „vs“ = doma, „@“ = vonku.
+    „vs“ = doma, „@“ = vonku. Poradie tímov je podľa oficiálnej tabuľky ligy.<br>
+    Zdroje dát: NHL – NHL API; európske ligy – Highlightly (rozpis približne mesiac dopredu).
   </p>
 </main>
 <div id="tip" role="tooltip"></div>
@@ -122,7 +140,8 @@ tr.det>td{padding:0;border-top:1px solid var(--line);background:var(--card)}
 const CONF = { Western: 'Západná konferencia', Eastern: 'Východná konferencia' };
 const PLACE = { all: '', home: ' – doma', away: ' – vonku' };
 const RES = { V: 'vyhraná', R: 'remíza', P: 'prehraná' };
-let DATA = null;
+const LG = {};      // kľúč ligy -> dáta ligy pripravené na vykreslenie
+let ORDER = [];     // poradie líg na stránke (NHL prvá)
 let FILTER = 'all';
 const open = new Set();
 
@@ -135,8 +154,8 @@ function el(tag, cls, text) {
 }
 const dShort = (d) => { const [y, m, dd] = d.split('-'); return `${+dd}.${+m}.`; };
 const dLong = (d) => { const [y, m, dd] = d.split('-'); return `${+dd}.${+m}.${y}`; };
-const teamName = (ab) => DATA.byAbbr[ab]?.name ?? ab;
-const teamShort = (ab) => DATA.byAbbr[ab]?.short ?? ab;
+const teamName = (L, ab, g) => L.byAbbr[ab]?.name ?? g?.on ?? ab;
+const teamShort = (L, ab) => L.byAbbr[ab]?.short ?? ab;
 
 function filtered(team) {
   const g = team?.games ?? [];
@@ -146,40 +165,41 @@ function filtered(team) {
 }
 const resOf = (g) => (g.ok && g.r ? g.r : 'N');
 
-function square(g, withTip = true) {
+function square(L, g, withTip = true) {
   const r = resOf(g);
   const s = el('span', 'sq ' + r, r === 'N' ? '?' : r);
   if (withTip) {
-    s.dataset.tip = JSON.stringify({ d: g.d, o: g.o, h: g.h, s: g.s, r: g.r, ok: g.ok });
+    s.dataset.tip = JSON.stringify({ lg: L.key, d: g.d, o: g.o, on: g.on, h: g.h, s: g.s, r: g.r, ok: g.ok });
     s.tabIndex = 0;
   }
   return s;
 }
 
-function nextSquare(n) {
+function nextSquare(L, n) {
   const s = el('span', 'sq N nx', '?');
-  s.dataset.tip = JSON.stringify({ next: true, d: n.d, t: n.t, o: n.o, h: n.h, st: n.st });
+  s.dataset.tip = JSON.stringify({ lg: L.key, next: true, d: n.d, t: n.t, o: n.o, on: n.on, h: n.h, st: n.st });
   s.tabIndex = 0;
   return s;
 }
 
-function nextTipHtml(n) {
+function nextTipHtml(L, n) {
   // čas v miestnom časovom pásme návštevníka
   const when = n.t
     ? new Date(n.t).toLocaleString('sk-SK', { weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })
     : dLong(n.d);
   const live = n.st === 'LIVE' || n.st === 'CRIT' ? '<br><i>práve sa hrá</i>' : '';
-  return `Najbližší zápas<br>${when}<br><b>${n.h ? 'vs' : '@'} ${teamName(n.o)}</b><br>${n.h ? 'doma' : 'vonku'}${live}`;
+  return `Najbližší zápas<br>${when}<br><b>${n.h ? 'vs' : '@'} ${teamName(L, n.o, n)}</b><br>${n.h ? 'doma' : 'vonku'}${live}`;
 }
 
 function tipHtml(g) {
-  if (g.next) return nextTipHtml(g);
+  const L = LG[g.lg];
+  if (g.next) return nextTipHtml(L, g);
   const where = g.h ? 'vs' : '@';
   let line3;
   if (g.s == null) line3 = 'skóre 1. tretiny chýba';
   else if (!g.ok) line3 = `1. tretina ${g.s} <i>(neoverené)</i>`;
   else line3 = `1. tretina <b>${g.s}</b> – ${RES[g.r]}`;
-  return `${dLong(g.d)}<br><b>${where} ${teamName(g.o)}</b><br>${line3}`;
+  return `${dLong(g.d)}<br><b>${where} ${teamName(L, g.o, g)}</b><br>${line3}`;
 }
 
 // ---------- tooltip (hover aj ťuknutie) ----------
@@ -221,7 +241,7 @@ document.addEventListener('click', (e) => {
 }, true);
 window.addEventListener('scroll', hideTip, { passive: true });
 
-// ---------- filter ----------
+// ---------- filter (platí pre všetky ligy naraz) ----------
 $('#tabs').addEventListener('click', (e) => {
   const b = e.target.closest('button[data-f]');
   if (!b) return;
@@ -232,20 +252,20 @@ $('#tabs').addEventListener('click', (e) => {
 });
 
 // ---------- vykreslenie ----------
-function formCell(team) {
+function formCell(L, team) {
   const td = el('td', 'form');
   // najbližší budúci zápas úplne vľavo (v režime Doma/Vonku len ak zodpovedá režimu)
   const n = team?.next;
-  if (n && (FILTER === 'all' || (FILTER === 'home') === !!n.h)) td.appendChild(nextSquare(n));
+  if (n && (FILTER === 'all' || (FILTER === 'home') === !!n.h)) td.appendChild(nextSquare(L, n));
   // najnovší zápas vľavo, najstarší vpravo; prázdne miesta na konci (strana starších)
   const last = filtered(team).slice(-5).reverse();
-  for (const g of last) td.appendChild(square(g));
+  for (const g of last) td.appendChild(square(L, g));
   for (let i = last.length; i < 5; i++) td.appendChild(el('span', 'sq empty'));
   return td;
 }
 
-function detail(abbr) {
-  const team = DATA.teams[abbr];
+function detail(L, abbr) {
+  const team = L.teams[abbr];
   const box = el('div', 'detail');
   const list = filtered(team);
   const c = { V: 0, R: 0, P: 0, N: 0 };
@@ -278,7 +298,7 @@ function detail(abbr) {
       ? new Date(n.t).toLocaleString('sk-SK', { weekday: 'short', day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' })
       : dLong(n.d);
     nx.innerHTML = 'Najbližší zápas: ';
-    nx.appendChild(el('b', null, `${n.h ? 'vs' : '@'} ${teamName(n.o)}`));
+    nx.appendChild(el('b', null, `${n.h ? 'vs' : '@'} ${teamName(L, n.o, n)}`));
     nx.appendChild(document.createTextNode(` · ${when}${n.h ? ' (doma)' : ' (vonku)'}`));
   } else {
     nx.textContent = 'Najbližší zápas: zatiaľ nie je naplánovaný.';
@@ -299,14 +319,18 @@ function detail(abbr) {
     tr.appendChild(el('td', null, dShort(g.d)));
     const o = el('td');
     o.appendChild(document.createTextNode((g.h ? 'vs ' : '@ ')));
-    o.appendChild(el('b', null, g.o));
-    o.appendChild(el('span', 'full', ' ' + teamShort(g.o)));
+    if (L.eu) {
+      o.appendChild(el('b', null, teamName(L, g.o, g)));
+    } else {
+      o.appendChild(el('b', null, g.o));
+      o.appendChild(el('span', 'full', ' ' + teamShort(L, g.o)));
+    }
     tr.appendChild(o);
     tr.appendChild(el('td', 'place', g.h ? 'doma' : 'vonku'));
     const sc = el('td', 'sc', g.s ?? '–');
     if (g.s && !g.ok) sc.appendChild(el('div', 'warn', 'neoverené'));
     tr.appendChild(sc);
-    const rs = el('td', 'rs'); rs.appendChild(square(g)); tr.appendChild(rs);
+    const rs = el('td', 'rs'); rs.appendChild(square(L, g)); tr.appendChild(rs);
     tb.appendChild(tr);
   }
   t.appendChild(tb);
@@ -314,42 +338,60 @@ function detail(abbr) {
   return box;
 }
 
-function teamBody(t) {
-  const tb = el('tbody', 'team' + (open.has(t.abbrev) ? ' open' : ''));
+function teamBody(L, t) {
+  const key = L.key + ':' + t.abbrev;
+  const tb = el('tbody', 'team' + (open.has(key) ? ' open' : ''));
   const tr = el('tr', 'row');
   tr.tabIndex = 0;
   tr.setAttribute('role', 'button');
-  tr.setAttribute('aria-expanded', String(open.has(t.abbrev)));
+  tr.setAttribute('aria-expanded', String(open.has(key)));
   tr.appendChild(el('td', 'rank', t.confRank + '.'));
   const n = el('td', 'name');
   n.appendChild(el('span', 'car', '▸'));
   n.appendChild(el('b', null, t.name));
-  n.appendChild(el('span', 'ab', t.abbrev));
+  if (!L.eu) n.appendChild(el('span', 'ab', t.abbrev));
   tr.appendChild(n);
-  tr.appendChild(formCell(DATA.teams[t.abbrev]));
+  tr.appendChild(formCell(L, L.teams[t.abbrev]));
   const toggle = () => {
-    if (open.has(t.abbrev)) open.delete(t.abbrev); else open.add(t.abbrev);
-    tb.replaceWith(teamBody(t));
+    if (open.has(key)) open.delete(key); else open.add(key);
+    tb.replaceWith(teamBody(L, t));
   };
   tr.addEventListener('click', toggle);
   tr.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   tb.appendChild(tr);
-  if (open.has(t.abbrev)) {
+  if (open.has(key)) {
     const d = el('tr', 'det');
-    const td = el('td'); td.colSpan = 3; td.appendChild(detail(t.abbrev));
+    const td = el('td'); td.colSpan = 3; td.appendChild(detail(L, t.abbrev));
     d.appendChild(td); tb.appendChild(d);
   }
   return tb;
 }
 
-function render() {
-  hideTip();
-  if (!DATA) return;
-  const root = $('#root');
-  root.textContent = '';
+function leagueHead(L) {
+  const head = el('div', 'lhead');
+  const h2 = el('h2');
+  h2.appendChild(el('span', 'cty', L.country + ' · '));
+  h2.appendChild(document.createTextNode(L.name));
+  head.appendChild(h2);
+  let s = L.updated ? 'Aktualizované: ' + new Date(L.updated).toLocaleString('sk-SK') : 'Zatiaľ neaktualizované';
+  if (L.unv) s += ` · neoverené zápasy: ${L.unv}`;
+  head.appendChild(el('span', 'upd', s));
+  return head;
+}
+
+function renderLeague(L) {
+  const wrap = el('div', 'league');
+  wrap.id = 'liga-' + L.key;
+  wrap.appendChild(leagueHead(L));
+  if (!L.standings?.length) {
+    wrap.appendChild(el('div', 'nodata', 'Dáta zatiaľ nie sú k dispozícii.'));
+    return wrap;
+  }
   const groups = {};
-  for (const t of DATA.standings) (groups[t.conference] ??= []).push(t);
-  const order = ['Western', 'Eastern', ...Object.keys(groups).filter((k) => !CONF[k])];
+  for (const t of L.standings) (groups[t.conference] ??= []).push(t);
+  const order = L.eu
+    ? Object.keys(groups)
+    : ['Western', 'Eastern', ...Object.keys(groups).filter((k) => !CONF[k])];
   for (const key of order) {
     if (!groups[key]) continue;
     const sec = el('section');
@@ -360,26 +402,92 @@ function render() {
     const fh = el('th', null, 'Forma 1. tr.' + PLACE[FILTER]); fh.style.textAlign = 'right'; fh.style.whiteSpace = 'nowrap';
     hr.appendChild(fh);
     head.appendChild(hr); tbl.appendChild(head);
-    for (const t of groups[key].sort((a, b) => a.confRank - b.confRank)) tbl.appendChild(teamBody(t));
+    for (const t of groups[key].sort((a, b) => a.confRank - b.confRank)) tbl.appendChild(teamBody(L, t));
     sec.appendChild(tbl);
-    root.appendChild(sec);
+    wrap.appendChild(sec);
   }
+  return wrap;
+}
+
+function render() {
+  hideTip();
+  const root = $('#root');
+  root.textContent = '';
+  for (const k of ORDER) root.appendChild(renderLeague(LG[k]));
+}
+
+function renderJump() {
+  const nav = $('#jump');
+  nav.textContent = '';
+  for (const k of ORDER) {
+    const a = el('a', null, LG[k].name);
+    a.href = '#liga-' + k;
+    nav.appendChild(a);
+  }
+  const setH = () => document.documentElement.style.setProperty('--barh', ($('#bar').offsetHeight + 8) + 'px');
+  setH();
+  window.addEventListener('resize', setH);
+}
+
+// európska liga z data-eu.json → rovnaký tvar ako NHL (tabuľka, zápasy tímov, najbližší zápas)
+function buildEU(l) {
+  const games = Object.entries(l.games ?? {}).map(([id, g]) => ({ id, ...g })).sort((a, b) => a.t.localeCompare(b.t));
+  let st = (l.standings ?? []).slice();
+  if (!st.length) {
+    const names = {};
+    for (const g of games) { names[g.h] = g.hn; names[g.a] = g.an; }
+    st = Object.entries(names).sort((a, b) => a[1].localeCompare(b[1]))
+      .map(([id, name], i) => ({ abbrev: String(id), name, conference: l.name, confRank: i + 1 }));
+  }
+  const teams = {};
+  for (const t of st) teams[t.abbrev] = { games: [], next: null };
+  const cutoff = new Date(Date.now() - 4 * 3600e3).toISOString();
+  for (const g of games) {
+    for (const home of [true, false]) {
+      const T = teams[String(home ? g.h : g.a)];
+      if (!T) continue;
+      const o = String(home ? g.a : g.h);
+      const on = home ? g.an : g.hn;
+      if (g.s === 'F') {
+        let s = null, r = null;
+        if (g.p1) {
+          const mine = home ? g.p1[0] : g.p1[1], theirs = home ? g.p1[1] : g.p1[0];
+          s = `${mine}:${theirs}`;
+          r = mine > theirs ? 'V' : mine < theirs ? 'P' : 'R';
+        }
+        T.games.push({ id: g.id, d: g.d, o, on, h: home, s, r, ok: !!g.ok });
+      } else if (g.t >= cutoff && (!T.next || g.t < T.next.t)) {
+        T.next = { id: g.id, d: g.d, t: g.t, o, on, h: home, st: g.s === 'L' ? 'LIVE' : 'FUT' };
+      }
+    }
+  }
+  return {
+    key: l.key, country: l.country, name: l.name, eu: true, updated: l.updated, unv: (l.unverified ?? []).length,
+    standings: st, teams, byAbbr: Object.fromEntries(st.map((t) => [t.abbrev, t])),
+  };
 }
 
 try { const f = localStorage.getItem('nhl-filter'); if (f && PLACE[f] != null) $(`#tabs [data-f="${f}"]`).click(); } catch {}
 
-fetch('data.json?_=' + Date.now())
-  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then((data) => {
-    if (data.version !== 2) throw new Error('starý formát dát');
-    data.byAbbr = Object.fromEntries(data.standings.map((t) => [t.abbrev, t]));
-    DATA = data;
-    let s = 'Aktualizované: ' + new Date(data.updated).toLocaleString('sk-SK');
-    if (data.unverified?.length) s += ` · neoverené zápasy: ${data.unverified.length}`;
-    $('#upd').textContent = s;
-    render();
-  })
-  .catch((e) => { $('#upd').textContent = 'Dáta sa nepodarilo načítať (' + e.message + ').'; });
+const getJson = (u) => fetch(u + '?_=' + Date.now()).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+Promise.allSettled([getJson('data.json'), getJson('data-eu.json')]).then(([nhl, eu]) => {
+  const errs = [];
+  if (nhl.status === 'fulfilled' && nhl.value.version === 2) {
+    const d = nhl.value;
+    LG.nhl = {
+      key: 'nhl', country: 'USA a Kanada', name: 'NHL', eu: false, updated: d.updated, unv: d.unverified?.length ?? 0,
+      standings: d.standings, teams: d.teams, byAbbr: Object.fromEntries(d.standings.map((t) => [t.abbrev, t])),
+    };
+    ORDER.push('nhl');
+  } else errs.push('NHL');
+  if (eu.status === 'fulfilled' && eu.value.version === 1) {
+    for (const l of eu.value.leagues ?? []) { LG[l.key] = buildEU(l); ORDER.push(l.key); }
+  } else errs.push('európske ligy');
+  $('#upd').textContent = errs.length ? 'Dáta sa nepodarilo načítať: ' + errs.join(', ') + '.' : '';
+  $('#upd').style.display = errs.length ? '' : 'none';
+  renderJump();
+  render();
+});
 </script>
 </body>
 </html>
