@@ -103,7 +103,7 @@ tr.det>td{padding:0;border-top:1px solid var(--line);background:var(--card)}
   <div id="root"></div>
 
   <p class="legend">
-    Forma = posledných 5 zápasov, najnovší vpravo. Počíta sa <b>len 1. tretina</b>:
+    Forma = posledných 5 zápasov, najnovší vľavo. Počíta sa <b>len 1. tretina</b>:
     <span class="sq V">V</span>vyhraná
     <span class="sq R">R</span>remíza
     <span class="sq P">P</span>prehraná
@@ -213,9 +213,10 @@ $('#tabs').addEventListener('click', (e) => {
 // ---------- vykreslenie ----------
 function formCell(team) {
   const td = el('td', 'form');
-  const last = filtered(team).slice(-5);
-  for (let i = last.length; i < 5; i++) td.appendChild(el('span', 'sq empty'));
+  // najnovší zápas vľavo, najstarší vpravo; prázdne miesta na konci (strana starších)
+  const last = filtered(team).slice(-5).reverse();
   for (const g of last) td.appendChild(square(g));
+  for (let i = last.length; i < 5; i++) td.appendChild(el('span', 'sq empty'));
   return td;
 }
 
