@@ -73,6 +73,7 @@ const fmtParts = (ts) => {
 };
 const addMin = (hm, m) => { const [h, mm] = hm.split(':').map(Number); const t = (h * 60 + mm + m) % 1440; return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
 const per = (s) => { const m = /^(\d+)\s*-\s*(\d+)$/.exec(String(s ?? '')); return m ? [+m[1], +m[2]] : null; };
+const FALLBACK = 2024;
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const SK = { Mon: 'po', Tue: 'ut', Wed: 'st', Thu: 'št', Fri: 'pi', Sat: 'so', Sun: 'ne' };
 
@@ -87,15 +88,22 @@ for (const w of WANT) {
   if (cands.length > 1) log(`viac kandidátov: ${cands.map((c) => c.id + '=' + c.name).join(', ')} – beriem prvého`);
   const cur = (league.seasons ?? []).find((s) => s.current) ?? (league.seasons ?? []).at(-1);
   log(`id ${league.id} „${league.name}“ (${league.country?.name}), sezóna ${cur?.season} (${cur?.start} – ${cur?.end}), current=${cur?.current}`);
-  log(`coverage: ${JSON.stringify(cur?.coverage ?? {})}`);
+  log(`coverage: ${JSON.stringify(cur?.coverage ?? {})}; sezóny v API: ${(league.seasons ?? []).map((x) => x.season).join(',')}`);
   ids.push(league.id);
   const row = { liga: w.key, id: league.id, name: league.name, season: cur?.season };
 
   // zápasy sezóny
   const g = await api(`/games?league=${league.id}&season=${cur?.season}`);
-  const games = g.body?.response ?? [];
+  let games = g.body?.response ?? [];
   row.seasonOk = !g.errors && games.length > 0;
-  row.gamesErr = g.errors ? JSON.stringify(g.errors) : null;
+  row.gamesErr = g.errors ? 'plán neumožňuje' : null;
+  if (!row.seasonOk && (league.seasons ?? []).some((x) => x.season === FALLBACK)) {
+    // aktuálna sezóna zablokovaná – rozpis analyzujeme z poslednej povolenej sezóny
+    const g2 = await api(`/games?league=${league.id}&season=${FALLBACK}`);
+    games = g2.body?.response ?? [];
+    row.analysis = FALLBACK;
+    log(`analýza rozpisu zo sezóny ${FALLBACK}/${FALLBACK + 1}`);
+  }
   const fin = games.filter((x) => ['FT', 'AOT', 'AP'].includes(x.status?.short));
   const fut = games.filter((x) => ['NS', 'TBD'].includes(x.status?.short) && (x.timestamp * 1000 || Date.parse(x.date)) > now);
   const withP1 = fin.filter((x) => per(x.periods?.first));
@@ -140,7 +148,7 @@ for (const w of WANT) {
   }
 
   // tabuľka
-  const s = await api(`/standings?league=${league.id}&season=${cur?.season}`);
+  const s = row.seasonOk ? await api(`/standings?league=${league.id}&season=${cur?.season}`) : { errors: 'neskúšané – sezóna zablokovaná (overené v 1. behu)', body: null };
   const groups = Array.isArray(s.body?.response) ? s.body.response : [];
   const teams = groups.flat().length;
   row.standOk = !s.errors && teams > 0;
@@ -158,6 +166,26 @@ const mine = dg.filter((x) => ids.includes(x.league?.id));
 const byL = {}; for (const x of mine) byL[x.league?.name] = (byL[x.league?.name] ?? 0) + 1;
 log(`${today}: spolu ${dg.length} zápasov vo všetkých ligách, z toho našich ${mine.length} ${JSON.stringify(byL)}${d.errors ? ' CHYBA ' + JSON.stringify(d.errors) : ''}`);
 const dateOk = !d.errors && d.status === 200;
+const dateTests = [];
+for (const off of [-1, -7, -30, 1, 7]) {
+  const day = fmtParts(Date.now() + off * 864e5).date;
+  const r = await api(`/games?date=${day}&timezone=${encodeURIComponent(TZ)}`);
+  const ours = (r.body?.response ?? []).filter((x) => ids.includes(x.league?.id));
+  const cnt = {}; for (const x of ours) cnt[x.league?.name] = (cnt[x.league?.name] ?? 0) + 1;
+  const fin = ours.filter((x) => ['FT', 'AOT', 'AP'].includes(x.status?.short));
+  const p1 = fin.filter((x) => per(x.periods?.first)).length;
+  let ok = 0, bad = 0;
+  for (const x of fin) {
+    const ps = ['first', 'second', 'third', 'overtime'].map((k) => per(x.periods?.[k])).filter(Boolean);
+    const h = ps.reduce((q, p) => q + p[0], 0), a = ps.reduce((q, p) => q + p[1], 0);
+    const fh = x.scores?.home, fa = x.scores?.away;
+    if ((h === fh && a === fa) || (x.status?.short === 'AP' && h === a && Math.abs(fh - fa) === 1 && Math.min(fh, fa) === h)) ok++; else bad++;
+  }
+  const res = { off, day, ok: !r.errors, err: r.errors ? JSON.stringify(r.errors) : '', ours: ours.length, cnt, fin: fin.length, p1, sumOk: ok, sumBad: bad };
+  dateTests.push(res);
+  log(`dátum ${day} (${off > 0 ? '+' : ''}${off} d): ${JSON.stringify(res)}`);
+  if (fin[0]) { const x = fin[0]; log(`  ukážka: ${JSON.stringify({ league: x.league?.name, date: x.date, status: x.status, teams: [x.teams?.home?.name, x.teams?.away?.name], scores: x.scores, periods: x.periods })}`); }
+}
 
 // ---------- súhrn ----------
 const st2 = await api('/status');
@@ -168,9 +196,13 @@ const yn = (b) => (b ? 'áno' : 'nie');
 const md = [
   '| liga | id | aktuálna sezóna | 1. tretina | kontrola súčtu | tabuľka | zápasy/týždeň | max/deň | hlavné dni | časy (Bratislava) → koniec ~ |',
   '|---|---|---|---|---|---|---|---|---|---|',
-  ...rows.map((r) => `| ${r.liga} | ${r.id} | ${yn(r.seasonOk)} ${r.season ?? ''}${r.gamesErr ? ' ' + r.gamesErr : ''} | ${r.fin ? `${r.p1}/${r.fin}` : '–'} | ${r.sum ?? '–'} | ${yn(r.standOk)} | ${r.perWeek ?? '–'} | ${r.maxPerDay ?? '–'} | ${r.days ?? '–'} | ${r.times ?? '–'} |`),
+  ...rows.map((r) => `| ${r.liga} | ${r.id} | ${yn(r.seasonOk)} ${r.season ?? ''}${r.gamesErr ? ' (' + r.gamesErr + ')' : ''}${r.analysis ? ', analýza z ' + r.analysis : ''} | ${r.fin ? `${r.p1}/${r.fin}` : '–'} | ${r.sum ?? '–'} | ${yn(r.standOk)} | ${r.perWeek ?? '–'} | ${r.maxPerDay ?? '–'} | ${r.days ?? '–'} | ${r.times ?? '–'} |`),
   '',
   `Dotaz podľa dátumu: ${yn(dateOk)} (${mine.length} našich zápasov dnes).`,
+  '',
+  '| dátum | funguje | našich zápasov | odohratých | s 1. tretinou | súčet sedí/nesedí |',
+  '|---|---|---|---|---|---|',
+  ...dateTests.map((t) => `| ${t.day} (${t.off > 0 ? '+' : ''}${t.off} d) | ${yn(t.ok)} ${t.err} | ${t.ours} ${JSON.stringify(t.cnt)} | ${t.fin} | ${t.p1} | ${t.sumOk}/${t.sumBad} |`),
   '',
   '### Najneskorší bežný začiatok podľa dňa (Bratislava)',
   '| deň | ' + WANT.map((w) => w.key).join(' | ') + ' |',
