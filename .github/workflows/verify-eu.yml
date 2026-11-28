@@ -1,0 +1,26 @@
+name: Kontrola európskych líg
+
+# Len ručné spustenie – porovná výsledky z data-eu.json (Highlightly) s API-Sports.
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Dni oproti dnešku (bezplatný API-Sports dovoľuje -1, 0, 1)'
+        default: '-1,0'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/verify-eu.mjs
+        env:
+          APISPORTS_KEY: ${{ secrets.APISPORTS_KEY }}
+          DAYS: ${{ inputs.days }}
